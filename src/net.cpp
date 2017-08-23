@@ -2235,13 +2235,16 @@ bool CConnman::Bind(const CService &addr, unsigned int flags) {
     return true;
 }
 
+// BF_EXPLICIT     = (1U << 0),
+// BF_REPORT_ERROR = (1U << 1),
+// BF_WHITELIST    = (1U << 2),
 bool CConnman::InitBinds(const std::vector<CService>& binds, const std::vector<CService>& whiteBinds) {
     bool fBound = false;
     for (const auto& addrBind : binds) {
-        fBound |= Bind(addrBind, (BF_EXPLICIT | BF_REPORT_ERROR));
+        fBound |= Bind(addrBind, (BF_EXPLICIT | BF_REPORT_ERROR));                 //  00000011
     }
     for (const auto& addrBind : whiteBinds) {
-        fBound |= Bind(addrBind, (BF_EXPLICIT | BF_REPORT_ERROR | BF_WHITELIST));
+        fBound |= Bind(addrBind, (BF_EXPLICIT | BF_REPORT_ERROR | BF_WHITELIST));  //  00000111
     }
     if (binds.empty() && whiteBinds.empty()) {
         struct in_addr inaddr_any;
