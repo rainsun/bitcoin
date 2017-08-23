@@ -2235,6 +2235,7 @@ bool CConnman::Bind(const CService &addr, unsigned int flags) {
     return true;
 }
 
+// BF_NONE         = 0,
 // BF_EXPLICIT     = (1U << 0),
 // BF_REPORT_ERROR = (1U << 1),
 // BF_WHITELIST    = (1U << 2),
