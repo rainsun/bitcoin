@@ -185,6 +185,8 @@ bool AppInit(int argc, char* argv[])
     return fRet;
 }
 
+
+// 入口
 int main(int argc, char* argv[])
 {
     SetupEnvironment();
@@ -192,5 +194,6 @@ int main(int argc, char* argv[])
     // Connect bitcoind signal handlers
     noui_connect();
 
+    // AppInit 正式开始
     return (AppInit(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE);
 }
